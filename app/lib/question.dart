@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-class Question  extends StatelessWidget {
+
+class Question extends StatelessWidget {
   String questionText;
-   
-   Question(this.questionText); //this is positional argument
+
+  Question(this.questionText); //this is positional argument
 
   @override
   Widget build(BuildContext context) {
-    return Text(questionText);
+    return Container(
+      width: double.infinity,
+      margin: EdgeInsets.all(10), //10 device margin
+      child: Text(
+        //widget that wrap into container
+        questionText,
+        style: TextStyle(fontSize: 28),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
