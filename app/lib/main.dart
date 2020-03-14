@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import './question.dart';
 // void main(){
 //   runApp(MyApp());
 // }
@@ -47,7 +47,8 @@ class _MyAppState extends State<MyApp> {
               //  <Widget>[
               [
             // Text(questions.elementAt(0),),
-            Text(
+            // Text(
+              Question(
               questions[_questionIndex],
             ),
 
