@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
+  final Function resultHandler;
 
-  Result(this.resultScore);
+  Result(this.resultScore, this.resultHandler);
   //getters mixture of property and method
   String get resultPhrase {
     // var resultText='You do it!';
@@ -14,6 +15,8 @@ class Result extends StatelessWidget {
       resultText = 'You are pentual';
     } else if (resultScore <= 16) {
       resultText = 'You are may intelligent';
+    } else if (resultScore < 20) {
+      resultText = 'You are genuis';
     } else {
       resultText = 'You are so bad!';
     }
@@ -24,14 +27,28 @@ class Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        // 'You did it!',
-        resultPhrase,
-        style: TextStyle(
-          fontSize: 36,
-          fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        
+      //
+      child: Column(
+        children: <Widget>[
+          // 'You did it!',
+          // resultPhrase,
+          // style: TextStyle(
+          //   fontSize: 36,
+          //   fontWeight: FontWeight.bold),
+          //   textAlign: TextAlign.center,
+          Text(
+            resultPhrase,
+            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          FlatButton(
+            onPressed: resultHandler,
+            textColor: Colors.blue,
+            child: Text(
+              'Restart Quiz',
+            ),
+          )
+        ],
       ),
     );
   }
