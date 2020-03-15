@@ -20,26 +20,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _questionIndex = 0;
-  void _answerQuestion() {
-    setState(() {
-      //setState is a function that force re render user interface
-      _questionIndex = _questionIndex + 1;
-    });
-    // questionIndex = questionIndex + 1;
-    print(_questionIndex);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    //{} map
-    //Map <>
-    // var questions = [
-    // final questions = [
-    // const questions = const [
-      //const questions =  [
-        const questions =[
-      {
+  // static const questions =[
+     // const questions =[
+        final questions =const [
+      { 
         'questionText': 'What\'s is your favorite colour?',
         'answers': ['Red', 'Green', 'Yellow', 'Orange'],
       },
@@ -57,6 +41,52 @@ class _MyAppState extends State<MyApp> {
         ],
       },
     ];
+  var _questionIndex = 0;
+  
+  void _answerQuestion() {
+  //   var aBool=true;
+  //  aBool=false;
+  if(_questionIndex < questions.length){
+    print('We have more questions!');
+  }
+
+
+
+    setState(() {
+      //setState is a function that force re render user interface
+      _questionIndex = _questionIndex + 1;
+    });
+    // questionIndex = questionIndex + 1;
+    print(_questionIndex);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //{} map
+    //Map <>
+    // var questions = [
+    // final questions = [
+    // const questions = const [
+      //const questions =  [
+    //     const questions =[
+    //   { 
+    //     'questionText': 'What\'s is your favorite colour?',
+    //     'answers': ['Red', 'Green', 'Yellow', 'Orange'],
+    //   },
+    //   {
+    //     'questionText': 'What\'s your favorite animal?',
+    //     'answers': ['lion', 'Monkey', 'elephant', 'deer'],
+    //   },
+    //   {
+    //     'questionText': 'What\'s your favorite peronality?',
+    //     'answers': [
+    //       'Quaid-e-azam',
+    //       'Allama iqbal',
+    //       'Sir syed ahmed khan',
+    //       'Z.ali.bhutto'
+    //     ],
+    //   },
+    // ];
 // var dummy=const ['Hello']; //compile time const
 // var dummy=['Hello'];  //modify original list and object
 // dummy.add('Quaid-e-azam');
