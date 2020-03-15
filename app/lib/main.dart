@@ -28,28 +28,46 @@ class _MyAppState extends State<MyApp> {
     //private property
     {
       'questionText': 'What\'s is your favorite colour?',
-      'answers': ['Red', 'Green', 'Yellow', 'Orange'],
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Green', 'score': 5},
+        {'text': 'Yellow', 'score': 3},
+        {'text': 'Orange', 'score': 2}
+      ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['lion', 'Monkey', 'elephant', 'deer'],
+      'answers': [
+        {'text': 'lion', 'score': 10},
+        {'text': 'Monkey', 'score': 4},
+        {'text': 'elephant', 'score': 2},
+        {'text': 'deer', 'score': 6}
+      ],
     },
     {
       'questionText': 'What\'s your favorite peronality?',
       'answers': [
-        'Quaid-e-azam',
-        'Allama iqbal',
-        'Sir syed ahmed khan',
-        'Z.ali.bhutto'
+        {'text': 'Soldier', 'score': 10},
+        {'text': 'Leader', 'score': 9},
+        {'text': 'Student', 'score': 8},
+        {'text': 'Entreprenuer', 'score': 4}
       ],
     },
   ];
   var _questionIndex = 0;
-
-  void _answerQuestion() {
+  var _totalScore=0;
+  void _answerQuestion(int score) {
     //   var aBool=true;
     //  aBool=false;
+    
+    // _totalScore= _totalScore+ score;
+     _totalScore+= score;    
+    
     // if(_questionIndex < questions.length){
+
+
+
+
     if (_questionIndex < _questions.length) {
       print('We have more questions!');
     } else {
@@ -146,14 +164,14 @@ class _MyAppState extends State<MyApp> {
             //     ],
             //   )
             ? //Quiz(_answerQuestion,questions)
-                         Quiz(
+            Quiz(
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex,
                 questions: _questions,
-              ) 
-              //questions is entire property of class
-            : Result(),
-            // Center(child: Text('You did it!')),
+              )
+            //questions is entire property of class
+            : Result(_totalScore),
+        // Center(child: Text('You did it!')),
         //Ctrl+Space
       ),
     );

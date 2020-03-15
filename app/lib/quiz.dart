@@ -44,9 +44,14 @@ class Quiz extends StatelessWidget {
         // ),
         // questions[_questionIndex]['answers'].map((question) {  //mapping a multiple list of widget
         //   return Answer(question);
-        ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+        // ...(questions[questionIndex]['answers'] as List<String>).map((answer) {
+        ...(questions[questionIndex]['answers'] as List<Map<String, Object>>).map((answer) {
+
           //mapping a multiple list of widget
-          return Answer(answerQuestion, answer);
+          // return Answer(answerQuestion, answer['text']);
+          return Answer( ()=> answerQuestion(answer['score']), answer['text']);
+        
+          // return Answer(answerQuestion, answer);
         }).toList() //add nested list
       ],
     );
