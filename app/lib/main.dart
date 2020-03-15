@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
-import './answer.dart'; 
+import './answer.dart';
 
 // void main(){
 //   runApp(MyApp());
@@ -33,18 +33,25 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     //{} map
-    //Map
+    //Map <>
     var questions = [
-{'questionText':'What\'s is your favorite colour?',
-    'answerText':['Red','Green','Yellow','Orange'],
-    },
-    {'questionText':'What\'s your favorite animal?',
-       'answerText':['lion','Monkey','elephant','deer'],
-    }
-    ,
-    {'questionText':'What\'s your favorite peronality?',
-       'answerText':['Quaid-e-azam','Allama iqbal','Sir syed ahmed khan','Z.ali.bhutto'],
-    },   
+      {
+        'questionText': 'What\'s is your favorite colour?',
+        'answers': ['Red', 'Green', 'Yellow', 'Orange'],
+      },
+      {
+        'questionText': 'What\'s your favorite animal?',
+        'answers': ['lion', 'Monkey', 'elephant', 'deer'],
+      },
+      {
+        'questionText': 'What\'s your favorite peronality?',
+        'answers': [
+          'Quaid-e-azam',
+          'Allama iqbal',
+          'Sir syed ahmed khan',
+          'Z.ali.bhutto'
+        ],
+      },
     ];
     //  @override
     return MaterialApp(
@@ -60,17 +67,21 @@ class _MyAppState extends State<MyApp> {
             // Text(questions.elementAt(0),),
             // Text(
             Question(
-              questions[_questionIndex],
+              // questions[_questionIndex],
+              questions[_questionIndex]['questionText'],
             ),
-          Answer(_answerQuestion)  ,
+            // Answer(_answerQuestion)  ,
+
             // RaisedButton(child: Text('Answer 1'),onPressed: _answerQuestion,),
-            // 
-          Answer(_answerQuestion)  ,
+            //
+            //
+            //Answer(_answerQuestion)  ,
 
             // RaisedButton(
             //     child: Text('Answer 2'),
             //     onPressed: () => print('Answer 2 choosen!'))
-            Answer(_answerQuestion),
+
+            // Answer(_answerQuestion),
             // RaisedButton(
             //   child: Text('Answer 3'),
             //   onPressed: () {
@@ -78,6 +89,13 @@ class _MyAppState extends State<MyApp> {
             //     print('Answer 3 choosen!');
             //   },
             // ),
+            // questions[_questionIndex]['answers'].map((question) {  //mapping a multiple list of widget
+            //   return Answer(question);
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              //mapping a multiple list of widget
+              return Answer(_answerQuestion, answer);
+            }).toList() //add nested list
           ],
         ),
         //Ctrl+Space
