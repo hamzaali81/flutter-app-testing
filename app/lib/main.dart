@@ -34,7 +34,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     //{} map
     //Map <>
-    var questions = [
+    // var questions = [
+    // final questions = [
+    // const questions = const [
+      //const questions =  [
+        const questions =[
       {
         'questionText': 'What\'s is your favorite colour?',
         'answers': ['Red', 'Green', 'Yellow', 'Orange'],
@@ -53,6 +57,14 @@ class _MyAppState extends State<MyApp> {
         ],
       },
     ];
+// var dummy=const ['Hello']; //compile time const
+// var dummy=['Hello'];  //modify original list and object
+// dummy.add('Quaid-e-azam');
+// print(dummy);
+// dummy=[];
+
+    //questions=[];  if does not work if question is const 
+    //new object in a memory
     //  @override
     return MaterialApp(
       home: Scaffold(
