@@ -4,7 +4,8 @@ class Question extends StatelessWidget {
   String questionText;
 
   Question(this.questionText); //this is positional argument
-
+ 
+ //These are dart feature not flutter specific
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +15,7 @@ class Question extends StatelessWidget {
         //widget that wrap into container
         questionText,
         style: TextStyle(fontSize: 28),
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.center,  //Ctrl+click check framework code
       ),
     );
   }

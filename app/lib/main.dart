@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart'; 
+
 // void main(){
 //   runApp(MyApp());
 // }
@@ -21,9 +23,8 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
   void _answerQuestion() {
     setState(() {
-      //setState is a function that force re render user interface 
-    _questionIndex = _questionIndex + 1;
-
+      //setState is a function that force re render user interface
+      _questionIndex = _questionIndex + 1;
     });
     // questionIndex = questionIndex + 1;
     print(_questionIndex);
@@ -31,9 +32,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    //{} map
+    //Map
     var questions = [
-      'What\'s is your favorite colour?',
-      'What\'s your favorite animal?'
+{'questionText':'What\'s is your favorite colour?',
+    'answerText':['Red','Green','Yellow','Orange'],
+    },
+    {'questionText':'What\'s your favorite animal?',
+       'answerText':['lion','Monkey','elephant','deer'],
+    }
+    ,
+    {'questionText':'What\'s your favorite peronality?',
+       'answerText':['Quaid-e-azam','Allama iqbal','Sir syed ahmed khan','Z.ali.bhutto'],
+    },   
     ];
     //  @override
     return MaterialApp(
@@ -48,26 +59,25 @@ class _MyAppState extends State<MyApp> {
               [
             // Text(questions.elementAt(0),),
             // Text(
-              Question(
+            Question(
               questions[_questionIndex],
             ),
-
+          Answer(_answerQuestion)  ,
             // RaisedButton(child: Text('Answer 1'),onPressed: _answerQuestion,),
-            RaisedButton(
-              child: Text('Answer 1'),
-              onPressed: _answerQuestion,
-            ),
+            // 
+          Answer(_answerQuestion)  ,
 
-            RaisedButton(
-                child: Text('Answer 2'),
-                onPressed: () => print('Answer 2 choosen!')),
-            RaisedButton(
-              child: Text('Answer 3'),
-              onPressed: () {
-                //...
-                print('Answer 3 choosen!');
-              },
-            ),
+            // RaisedButton(
+            //     child: Text('Answer 2'),
+            //     onPressed: () => print('Answer 2 choosen!'))
+            Answer(_answerQuestion),
+            // RaisedButton(
+            //   child: Text('Answer 3'),
+            //   onPressed: () {
+            //     //...
+            //     print('Answer 3 choosen!');
+            //   },
+            // ),
           ],
         ),
         //Ctrl+Space
