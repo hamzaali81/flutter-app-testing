@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+// import './question.dart';
+// import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 // void main(){
 //   runApp(MyApp());
@@ -21,39 +23,38 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // static const questions =[
-     // const questions =[
-        final questions =const [
-      { 
-        'questionText': 'What\'s is your favorite colour?',
-        'answers': ['Red', 'Green', 'Yellow', 'Orange'],
-      },
-      {
-        'questionText': 'What\'s your favorite animal?',
-        'answers': ['lion', 'Monkey', 'elephant', 'deer'],
-      },
-      {
-        'questionText': 'What\'s your favorite peronality?',
-        'answers': [
-          'Quaid-e-azam',
-          'Allama iqbal',
-          'Sir syed ahmed khan',
-          'Z.ali.bhutto'
-        ],
-      },
-    ];
+  // const questions =[
+  final _questions = const [
+    //private property
+    {
+      'questionText': 'What\'s is your favorite colour?',
+      'answers': ['Red', 'Green', 'Yellow', 'Orange'],
+    },
+    {
+      'questionText': 'What\'s your favorite animal?',
+      'answers': ['lion', 'Monkey', 'elephant', 'deer'],
+    },
+    {
+      'questionText': 'What\'s your favorite peronality?',
+      'answers': [
+        'Quaid-e-azam',
+        'Allama iqbal',
+        'Sir syed ahmed khan',
+        'Z.ali.bhutto'
+      ],
+    },
+  ];
   var _questionIndex = 0;
-  
-  void _answerQuestion() {
-  //   var aBool=true;
-  //  aBool=false;
-  // if(_questionIndex < questions.length){
-    if(_questionIndex < questions.length){
-    print('We have more questions!');
-  }
-  else{
-    print('No more questions!');
-  }
 
+  void _answerQuestion() {
+    //   var aBool=true;
+    //  aBool=false;
+    // if(_questionIndex < questions.length){
+    if (_questionIndex < _questions.length) {
+      print('We have more questions!');
+    } else {
+      print('No more questions!');
+    }
 
     setState(() {
       //setState is a function that force re render user interface
@@ -70,9 +71,9 @@ class _MyAppState extends State<MyApp> {
     // var questions = [
     // final questions = [
     // const questions = const [
-      //const questions =  [
+    //const questions =  [
     //     const questions =[
-    //   { 
+    //   {
     //     'questionText': 'What\'s is your favorite colour?',
     //     'answers': ['Red', 'Green', 'Yellow', 'Orange'],
     //   },
@@ -96,7 +97,7 @@ class _MyAppState extends State<MyApp> {
 // print(dummy);
 // dummy=[];
 
-    //questions=[];  if does not work if question is const 
+    //questions=[];  if does not work if question is const
     //new object in a memory
     //  @override
     return MaterialApp(
@@ -105,44 +106,54 @@ class _MyAppState extends State<MyApp> {
           title: Text('My first App'),
         ),
         //  body: Text('This is my text'),
-        body: _questionIndex < questions.length ? Column(
-          children:
-              //  <Widget>[
-              [
-            // Text(questions.elementAt(0),),
-            // Text(
-            Question(
-              // questions[_questionIndex],
-              questions[_questionIndex]['questionText'],
-            ),
-            // Answer(_answerQuestion)  ,
+        body: _questionIndex < _questions.length
+            // ? Column(
+            //     children:
+            //         //  <Widget>[
+            //         [
+            //       // Text(questions.elementAt(0),),
+            //       // Text(
+            //       Question(
+            //         // questions[_questionIndex],
+            //         questions[_questionIndex]['questionText'],
+            //       ),
+            //       // Answer(_answerQuestion)  ,
 
-            // RaisedButton(child: Text('Answer 1'),onPressed: _answerQuestion,),
-            //
-            //
-            //Answer(_answerQuestion)  ,
+            //       // RaisedButton(child: Text('Answer 1'),onPressed: _answerQuestion,),
+            //       //
+            //       //
+            //       //Answer(_answerQuestion)  ,
 
-            // RaisedButton(
-            //     child: Text('Answer 2'),
-            //     onPressed: () => print('Answer 2 choosen!'))
+            //       // RaisedButton(
+            //       //     child: Text('Answer 2'),
+            //       //     onPressed: () => print('Answer 2 choosen!'))
 
-            // Answer(_answerQuestion),
-            // RaisedButton(
-            //   child: Text('Answer 3'),
-            //   onPressed: () {
-            //     //...
-            //     print('Answer 3 choosen!');
-            //   },
-            // ),
-            // questions[_questionIndex]['answers'].map((question) {  //mapping a multiple list of widget
-            //   return Answer(question);
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              //mapping a multiple list of widget
-              return Answer(_answerQuestion, answer);
-            }).toList() //add nested list
-          ],
-        ) : Center(child : Text('You did it!')) ,
+            //       // Answer(_answerQuestion),
+            //       // RaisedButton(
+            //       //   child: Text('Answer 3'),
+            //       //   onPressed: () {
+            //       //     //...
+            //       //     print('Answer 3 choosen!');
+            //       //   },
+            //       // ),
+            //       // questions[_questionIndex]['answers'].map((question) {  //mapping a multiple list of widget
+            //       //   return Answer(question);
+            //       ...(questions[_questionIndex]['answers'] as List<String>)
+            //           .map((answer) {
+            //         //mapping a multiple list of widget
+            //         return Answer(_answerQuestion, answer);
+            //       }).toList() //add nested list
+            //     ],
+            //   )
+            ? //Quiz(_answerQuestion,questions)
+                         Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              ) 
+              //questions is entire property of class
+            : Result(),
+            // Center(child: Text('You did it!')),
         //Ctrl+Space
       ),
     );
