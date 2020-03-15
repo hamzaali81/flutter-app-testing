@@ -46,10 +46,13 @@ class _MyAppState extends State<MyApp> {
   void _answerQuestion() {
   //   var aBool=true;
   //  aBool=false;
-  if(_questionIndex < questions.length){
+  // if(_questionIndex < questions.length){
+    if(_questionIndex < questions.length){
     print('We have more questions!');
   }
-
+  else{
+    print('No more questions!');
+  }
 
 
     setState(() {
@@ -102,7 +105,7 @@ class _MyAppState extends State<MyApp> {
           title: Text('My first App'),
         ),
         //  body: Text('This is my text'),
-        body: Column(
+        body: _questionIndex < questions.length ? Column(
           children:
               //  <Widget>[
               [
@@ -139,7 +142,7 @@ class _MyAppState extends State<MyApp> {
               return Answer(_answerQuestion, answer);
             }).toList() //add nested list
           ],
-        ),
+        ) : Center(child : Text('You did it!')) ,
         //Ctrl+Space
       ),
     );
